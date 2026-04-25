@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>For Neda ❤️ My Eternal Love</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Tahoma', system-ui;
+            background: radial-gradient(circle at 10% 20%, #0a0f2a, #030617);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            transition: background 0.1s ease;
+            cursor: crosshair;
+        }
+
+        body.rainbow {
+            animation: rainbowFlash 0.08s infinite linear;
+        }
+
+        @keyframes rainbowFlash {
+            0% { background: #ff0000; }
+            14% { background: #ff8800; }
+            28% { background: #ffff00; }
+            42% { background: #00ff00; }
+            57% { background: #0088ff; }
+            71% { background: #4400ff; }
+            85% { background: #ff00ff; }
+            100% { background: #ff0000; }
+        }
+
+        #touchTrailCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            padding: 35px;
+            margin: 20px 0;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+            animation: floatIn 0.6s ease;
+        }
+
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0%,100%{ transform: scale(1); }
+            50%{ transform: scale(1.02); }
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7, #3b82f6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: heartbeat 1.6s infinite;
+        }
+
+        /* DESCRIPTION BOX - جدید اضافه شد */
+        .description-box {
+            background: linear-gradient(135deg, #f5f0ff, #e9e0ff);
+            border-radius: 32px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #a855f7;
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.2);
+        }
+        .description-box h3 {
+            color: #7c3aed;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .description-box p {
+            color: #4a1d6d;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+        .description-box .heart-icon {
+            font-size: 1.5rem;
+            margin: 0 5px;
+        }
+
+        .counter-box {
+            background: linear-gradient(125deg, #5b4c9f, #2b2d6b);
+            color: white;
+            padding: 20px;
+            border-radius: 36px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: inline-block;
+            margin: 0 8px;
+            animation: bounce 1.2s infinite;
+        }
+
+        @keyframes bounce {
+            0%,100%{ transform: translateY(0); }
+            50%{ transform: translateY(-5px); }
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 34px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            padding: 15px;
+            text-align: center;
+            background: linear-gradient(90deg, #6c5ce7, #a367fc);
+            color: white;
+            font-weight: bold;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, #f8f4ff, #ede7ff);
+            padding: 22px;
+            border-radius: 32px;
+        }
+
+        /* Love Plant */
+        .plant-container {
+            text-align: center;
+            padding: 15px;
+        }
+        .plant-emoji {
+            font-size: 5rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .plant-progress {
+            background: #e0d4ff;
+            border-radius: 25px;
+            height: 12px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .plant-bar {
+            background: linear-gradient(90deg, #22c55e, #a855f7);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s;
+            border-radius: 25px;
+        }
+
+        /* Love Puzzle */
+        .puzzle-box {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            padding: 20px;
+            border-radius: 32px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .puzzle-question {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            color: #4a1d6d;
+        }
+        .puzzle-input {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .puzzle-input input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 50px;
+            border: 2px solid #a855f7;
+            outline: none;
+        }
+        .puzzle-input button, .treasure-question button {
+            background: linear-gradient(95deg, #7c3aed, #a855f7);
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+        .puzzle-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Treasure Box */
+        .treasure-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 32px;
+            margin: 15px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .treasure-box.locked {
+            filter: grayscale(0.3);
+        }
+        .treasure-box.unlocked {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+        .treasure-emoji {
+            font-size: 4rem;
+            display: block;
+        }
+        .treasure-questions {
+            margin-top: 15px;
+        }
+        .treasure-question {
+            background: white;
+            padding: 10px;
+            border-radius: 20px;
+            margin: 10px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .treasure-question input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 20px;
+            border: 1px solid #d97706;
+            outline: none;
+        }
+        .treasure-message {
+            background: #d97706;
+            color: white;
+            padding: 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+        }
+        .treasure-image {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .treasure-image img {
+            max-width: 100%;
+            border-radius: 20px;
+        }
+
+        /* Love Map */
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .map-location {
+            background: white;
+            padding: 12px;
+            border-radius: 24px;
+            cursor: pointer;
+            text-align: center;
+            border-left: 4px solid #8b5cf6;
+            transition: 0.2s;
+        }
+        .map-location:hover {
+            transform: scale(1.02);
+        }
+        .location-emoji {
+            font-size: 2rem;
+            display: block;
+        }
+        .location-name {
+            font-weight: bold;
+            color: #5b21b6;
+        }
+        .location-memory {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* Message Form */
+        .message-form {
+            background: linear-gradient(145deg, #f8f4ff, #ede7ff);
+            padding: 22px;
+            border-radius: 32px;
+            margin: 15px 0;
+        }
+        .input-area {
+            display: flex;
+            gap: 12px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .input-area input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: 2px solid #a78bfa;
+            font-size: 1rem;
+            outline: none;
+        }
+        button {
+            background: linear-gradient(95deg, #7c3aed, #a855f7);
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        .secret-export {
+            background: #10b981;
+            margin-top: 10px;
+        }
+        .thankyou-msg {
+            color: #10b981;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Calendar */
+        .calendar {
+            background: rgba(255, 245, 255, 0.9);
+            border-radius: 32px;
+            padding: 20px;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .calendar-header button {
+            background: linear-gradient(95deg, #7c3aed, #a855f7);
+            padding: 8px 16px;
+        }
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #5b21b6;
+        }
+        .calendar-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-date {
+            background: white;
+            padding: 10px 5px;
+            border-radius: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .calendar-date:hover {
+            background: #e0d4ff;
+        }
+        .calendar-date.checked {
+            background: linear-gradient(145deg, #ec4899, #8b5cf6);
+            color: white;
+        }
+
+        /* Heart Game */
+        .heart-game {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .game-heart {
+            font-size: 3rem;
+            background: white;
+            border-radius: 30px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .game-heart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Memory Match */
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .memory-card {
+            background: linear-gradient(145deg, #9b6bff, #6c5ce7);
+            aspect-ratio: 1;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .memory-card.flipped {
+            background: white;
+            color: #6c5ce7;
+        }
+        .memory-card.matched {
+            opacity: 0.4;
+            background: #22c55e;
+            cursor: default;
+        }
+
+        /* Love Question */
+        .question-box {
+            background: #f1ebff;
+            border-radius: 32px;
+            padding: 24px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .love-btn {
+            background: #8b5cf6;
+            margin: 5px;
+        }
+
+        /* Popup */
+        .message-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #000428, #3b2667);
+            color: white;
+            padding: 20px 35px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            z-index: 10000;
+            text-align: center;
+            max-width: 85%;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1f1a3c;
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            padding: 8px 18px;
+            z-index: 1000;
+            border: 1px solid #cab8ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-100px); }
+        }
+        @keyframes floatUpSlow {
+            0% { bottom: -200px; opacity: 1; }
+            100% { bottom: 110vh; opacity: 0; }
+        }
+        @keyframes explodeOut {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(0.8) translate(var(--x, 0), var(--y, 0)); opacity: 0; }
+        }
+
+        .floating-heart {
+            position: fixed;
+            pointer-events: none;
+            animation: fadeOut 3s ease-out;
+            z-index: 999;
+        }
+        .balloon-heart {
+            position: fixed;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 180px;
+            animation: floatUpSlow 3s ease-out forwards;
+            pointer-events: none;
+            z-index: 10000;
+            color: #9b59b6;
+        }
+        .small-heart {
+            position: fixed;
+            font-size: 28px;
+            animation: explodeOut 0.8s ease-out forwards;
+            pointer-events: none;
+            z-index: 10001;
+        }
+
+        @media (max-width: 700px) {
+            .card { padding: 20px; }
+            .title { font-size: 1.8rem; }
+            .map-grid { grid-template-columns: 1fr; }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="touchTrailCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="container">
+        <div class="card">
+            <div class="title">💜 welcome to our universe 💜</div>
+
+            <!-- Typing Animation -->
+            <div class="counter-box"><span id="typewriter"></span></div>
+
+            <!-- Days Counter -->
+            <div class="counter-box">
+                <h3>📆 since I found you...</h3>
+                <span class="counter-number" id="daysCount">0</span> <span>days of love</span>
+                <p>💘 my heart belongs to you 💘</p>
+            </div>
+
+            <!-- ========== LOVE PLANT ========== -->
+            <div class="glass-card">
+                <h3>🌱 our love plant 🌱</h3>
+                <div class="plant-container">
+                    <div class="plant-emoji" id="plantEmoji">🌱</div>
+                    <div class="plant-progress">
+                        <div class="plant-bar" id="plantBar"></div>
+                    </div>
+                    <p id="plantMessage">🌸 Click on the plant to make our love grow! 🌸</p>
+                </div>
+            </div>
+
+            <!-- ========== LOVE PUZZLE ========== -->
+            <div class="puzzle-box">
+                <h3>🔐 love puzzle 🔐</h3>
+                <p>Answer the questions </p>
+                <div id="puzzleQuestions"></div>
+                <div id="puzzleFeedback" class="puzzle-feedback"></div>
+            </div>
+
+            <!-- ========== TREASURE BOX (جواب‌ها درست شد) ========== -->
+            <div class="treasure-box locked" id="treasureBox">
+                <span class="treasure-emoji" id="treasureEmoji">🎁🔒</span>
+                <h3>treasure box</h3>
+                <p id="treasureStatus">🔐 answer 3 questions to open the treasure 🔐</p>
+                <div id="treasureQuestions" class="treasure-questions"></div>
+                <div id="treasureMessage" class="treasure-message"></div>
+                <div id="treasureImage" class="treasure-image"></div>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="photo-gallery">
+                <div class="photo-card"><img src="photo1.jpg" alt="neda1" onerror="this.src='https://placehold.co/400x300/8b5cf6/white?text=our+moments'"><div class="photo-caption">💖 you are the most beatiful creature i've ever met</div></div>
+                <div class="photo-card"><img src="photo2.jpg" alt="neda2" onerror="this.src='https://placehold.co/400x300/a855f7/white?text=your+smile'"><div class="photo-caption">✨ your smile can magically make my day</div></div>
+                <div class="photo-card"><img src="photo3.jpg" alt="neda3" onerror="this.src='https://placehold.co/400x300/7c3aed/white?text=starlight'"><div class="photo-caption">🌟 i mean they should keep you in the museum</div></div>
+            </div>
+
+            <!-- Grid 2 Columns -->
+            <div class="grid-2">
+                <!-- Love Map -->
+                <div class="glass-card">
+                    <h3>🗺️ our love map</h3>
+                    <div class="map-grid" id="loveMap"></div>
+                    <button onclick="addLocation()">➕ add new place</button>
+                </div>
+
+                <!-- Message Form -->
+                <div class="message-form">
+                    <h3>💌 send me a message 💌</h3>
+                    <p>write anything you want, only I can read it</p>
+                    <div class="input-area">
+                        <input type="text" id="secretMessageInput" placeholder="your message for me...">
+                        <button onclick="saveSecretMessage()">💝 send</button>
+                    </div>
+                    <div id="thankyouMsg" class="thankyou-msg"></div>
+                    <button class="secret-export" onclick="exportAllMessages()">🔐 view messages (only me)</button>
+                </div>
+
+                <!-- Love Calendar -->
+                <div class="calendar">
+                    <h3>📅 love calendar</h3>
+                    <div class="calendar-header">
+                        <button onclick="prevMonth()">◀</button>
+                        <span id="monthYear" style="font-weight: bold; font-size: 1.2rem;"></span>
+                        <button onclick="nextMonth()">▶</button>
+                    </div>
+                    <div class="calendar-weekdays" id="calendarWeekdays"></div>
+                    <div class="calendar-dates" id="calendarDates"></div>
+                    <p style="margin-top: 15px;">❤️ = you visited me</p>
+                </div>
+            </div>
+
+            <!-- Heart Game -->
+            <div class="glass-card">
+                <h3> collect my hearts 🎮</h3>
+                <div style="font-size: 1.6rem; text-align: center;">❤️ score: <span id="gameScore">0</span> / 9</div>
+                <div class="heart-game" id="heartGame"></div>
+                <button onclick="resetGame()">⟳ reset game</button>
+            </div>
+
+            <!-- Memory Match -->
+            <div class="glass-card">
+                <h3>🎴 memory match</h3>
+                <p>match the pairs - each correct match shows a love message!</p>
+                <div class="game-board" id="memoryBoard"></div>
+                <button onclick="initMemoryGame()">🔄 new game</button>
+            </div>
+
+            <!-- Love Question -->
+            <div class="question-box">
+                <h3>❓ love question </h3>
+                <p>how much do I love you?</p>
+                <button class="love-btn" onclick="loveAnswer('so much')">so much</button>
+                <button class="love-btn" onclick="loveAnswer('infinity')">infinity</button>
+                <button class="love-btn" onclick="loveAnswer('more than everything')">more than everything</button>
+                <div id="loveResponse" style="margin-top: 15px; font-weight: bold;"></div>
+            </div>
+
+            <!-- Big Surprise Button -->
+            <button style="width:100%; margin: 20px 0; background: linear-gradient(120deg,#a855f7,#3b82f6);" onclick="bigSurprise()">🎁 Big Surprise 🎁</button>
+            <div id="surpriseZone" style="text-align: center;"></div>
+
+            <!-- ========== توضیحات انتهای سایت ========== -->
+            <div style="text-align: center; margin: 30px 0 20px 0; padding: 20px; background: linear-gradient(135deg, #f8f4ff, #ede7ff); border-radius: 32px; direction: rtl;">
+    <h3 style="color: #7c3aed; margin-bottom: 15px;">✨ description ✨</h3>
+    <p style="color: #4a1d6d; line-height: 1.8; font-size: 0.95rem;">
+        💜 every heart you collect, every puzzle you solve, every memory you open — is a piece of my soul💜<br>
+        ❣️ To the girl who loves paintings, music, animals, buildings, food — and hates bugs, darkness, and biology.   ❣️<br>
+        🌙 you are my sunshine, my moon, and all my stars 🌙<br>
+         Thank you for all the memories you made for me, and for showing me the true meaning of LOVE.
+        I was lucky to feel those painful yet beautiful emotions, and it is my honor that I felt them with you.<br>
+        You didn't come into my life to stay, but you stayed in my heart forever <br>
+        🍂 Nothing remains of you except beautiful memories... and that's more than enough for me. 🍂<br>
+        🦋 "Some people are not meant to stay, but they are meant to change you forever. You changed me, Neda Nabati." 🦋
+
+    </p>
+    <p style="color: #a855f7; margin-top: 15px; font-style: italic;">
+        — always yours, forever—
+    </p>
+            </div>
+
+            <!-- Daily Love Note -->
+            <div class="counter-box" style="background: linear-gradient(145deg,#8b5cf6,#e879f9);">
+                <h3>💌 today's love note</h3>
+                <p id="dailyMessage" style="font-size:1.2rem;"></p>
+            </div>
+
+            <div class="footer">made with infinite love, THE GOD❤️</div>
+        </div>
+    </div>
+
+    <button class="music-control" id="musicToggle">🎵 Perfect · Ed Sheeran 🎵</button>
+
+    <script>
+        // ریست کردن همه چیز در هر بار باز شدن
+        localStorage.clear();
+        
+        // ========== LOVE PLANT ==========
+        let plantVisits = 0;
+        
+        function updatePlant() {
+            const percentage = (plantVisits / 7) * 100;
+            const bar = document.getElementById('plantBar');
+            if(bar) bar.style.width = percentage + '%';
+            
+            const stages = ['🌱', '🌿', '🌱🌿', '🌿🌸', '🌸🌿', '🌸🌻', '🌻🌻', '🌻💖🌻'];
+            const emojiSpan = document.getElementById('plantEmoji');
+            if(emojiSpan) emojiSpan.innerHTML = stages[plantVisits] || '🌱💖🌻';
+            
+            const msgP = document.getElementById('plantMessage');
+            if(msgP) {
+                if(plantVisits >= 7) {
+                    msgP.innerHTML = "💜 OUR LOVE HAS FULLY BLOOMED! I LOVE YOU! 💜";
+                } else {
+                    msgP.innerHTML = `🌸 ${7-plantVisits} more clicks until our love blooms! 🌸`;
+                }
+            }
+        }
+        
+        function increasePlant() {
+            if(plantVisits < 7) {
+                plantVisits++;
+                updatePlant();
+                showPopup(`🌱 Our love grew! (${plantVisits}/7)`);
+            }
+        }
+        document.getElementById('plantEmoji')?.addEventListener('click', increasePlant);
+        updatePlant();
+
+        // ========== LOVE PUZZLE ==========
+        const puzzles = [
+            "What is the most powerful feeling in the world? (4 letters)",
+            "What word describes how I feel about you? (4 letters)",
+            "What makes the world go round? (4 letters)",
+            "What is the answer to everything in my heart? (4 letters)"
+        ];
+        let puzzleIndex = 0;
+        let puzzleSolved = false;
+        
+        function renderPuzzle() {
+            const container = document.getElementById('puzzleQuestions');
+            if(!container) return;
+            
+            if(puzzleSolved) {
+                container.innerHTML = '<p>✅ Puzzle solved! The answer is always LOVE! ❤️‍🔥</p>';
+                document.getElementById('puzzleFeedback').innerHTML = '<span style="color:#22c55e;">✨ You unlocked the secret of love! ✨</span>';
+                return;
+            }
+            let html = `<div class="puzzle-question">❓ ${puzzles[puzzleIndex]} ❓</div>
+                       <div class="puzzle-input">
+                           <input type="text" id="puzzleAnswer" placeholder="Type your answer...">
+                           <button onclick="checkPuzzle()">Check Answer</button>
+                       </div>`;
+            container.innerHTML = html;
+        }
+        
+        function checkPuzzle() {
+            if(puzzleSolved) return;
+            let input = document.getElementById('puzzleAnswer');
+            let answer = input ? input.value.trim().toUpperCase() : '';
+            if(answer === 'LOVE') {
+                if(puzzleIndex < puzzles.length - 1) {
+                    puzzleIndex++;
+                    showPopup(`✅ Correct! ${puzzles.length - puzzleIndex} questions left!`);
+                    renderPuzzle();
+                } else {
+                    puzzleSolved = true;
+                    showPopup("🎉 YOU SOLVED THE LOVE PUZZLE! The answer is always LOVE! 🎉");
+                    renderPuzzle();
+                }
+            } else {
+                showPopup("❌ Not quite! Think about what's in my heart... ❌");
+            }
+        }
+        
+        // ========== TREASURE BOX  ==========
+        const treasureQuestionsList = [
+            { q: "What is my love language?", a: "physical touch" },
+            { q: "How do I feel every time I see you?", a: "blessed" },
+            { q: "What is the key to your heart?", a: "food and flower" }
+        ];
+        let treasureUnlocked = false;
+        let treasureAnswers = ["", "", ""];
+        
+        function renderTreasure() {
+            const box = document.getElementById('treasureBox');
+            const emojiSpan = document.getElementById('treasureEmoji');
+            const statusP = document.getElementById('treasureStatus');
+            const questionsDiv = document.getElementById('treasureQuestions');
+            const messageDiv = document.getElementById('treasureMessage');
+            const imageDiv = document.getElementById('treasureImage');
+            
+            if(!box || !emojiSpan || !statusP || !questionsDiv || !messageDiv || !imageDiv) return;
+            
+            if(treasureUnlocked) {
+                box.classList.remove('locked');
+                box.classList.add('unlocked');
+                emojiSpan.innerHTML = '🎁💖✨';
+                statusP.innerHTML = '🔓 TREASURE UNLOCKED! 🔓';
+                questionsDiv.style.display = 'none';
+                messageDiv.style.display = 'block';
+                messageDiv.innerHTML = '💜 MY LOVE FOR YOU IS THE GREATEST TREASURE! 💜<br>You mean everything to me, Neda! ❤️';
+                imageDiv.style.display = 'block';
+                imageDiv.innerHTML = '<img src="https://media1.tenor.com/m/-f5KATuLuFIAAAAC/love-cute.gif" alt="I Love You" style="max-width:100%; border-radius:20px;">';
+                return;
+            }
+            
+            box.classList.add('locked');
+            emojiSpan.innerHTML = '🎁🔒';
+            statusP.innerHTML = '🔐 Answer 3 questions correctly to open the treasure 🔐';
+            questionsDiv.style.display = 'block';
+            messageDiv.style.display = 'none';
+            imageDiv.style.display = 'none';
+            
+            let html = '';
+            treasureQuestionsList.forEach((q, idx) => {
+                let isCorrect = treasureAnswers[idx] === q.a;
+                let currentValue = (treasureAnswers[idx] && treasureAnswers[idx] !== q.a) ? treasureAnswers[idx] : '';
+                html += `<div class="treasure-question">
+                            <span style="flex:1;">${q.q}</span>
+                            <input type="text" id="treasureAns${idx}" placeholder="your answer..." ${isCorrect ? 'disabled style="background:#e8f5e9;"' : ''} value="${!isCorrect ? currentValue : ''}">
+                            ${!isCorrect ? `<button onclick="checkTreasureAnswer(${idx})">✔️ Check</button>` : '<span style="color:green;">✅ Correct!</span>'}
+                         </div>`;
+            });
+            questionsDiv.innerHTML = html;
+        }
+        
+        function checkTreasureAnswer(idx) {
+            let input = document.getElementById(`treasureAns${idx}`);
+            if(!input) return;
+            let answer = input.value.trim().toLowerCase();
+            let correctAnswer = treasureQuestionsList[idx].a.toLowerCase();
+            
+            if(answer === correctAnswer) {
+                treasureAnswers[idx] = treasureQuestionsList[idx].a;
+                showPopup(`✅ Correct! Question ${idx+1} answered!`);
+                input.disabled = true;
+                input.style.background = '#e8f5e9';
+                
+                let allCorrect = treasureAnswers.every((a, i) => a === treasureQuestionsList[i].a);
+                if(allCorrect) {
+                    treasureUnlocked = true;
+                    showPopup("💎🎉 YOU UNLOCKED THE TREASURE BOX! 🎉💎");
+                    renderTreasure();
+                } else {
+                    renderTreasure();
+                }
+            } else {
+                showPopup(`❌ Wrong answer! Try again... 💕 (Hint: ${treasureQuestionsList[idx].a})`);
+            }
+        }
+        
+        function openTreasureIfUnlocked() {
+            if(treasureUnlocked) {
+                showPopup("💝 You already opened my heart's treasure! I love you! 💝");
+            } else {
+                showPopup("🔐 The treasure box is locked! Answer the 3 questions above first! 🔐");
+            }
+        }
+        document.getElementById('treasureBox')?.addEventListener('click', openTreasureIfUnlocked);
+
+        // ========== LOVE MAP ==========
+        let locations = [
+            {emoji:"📍", name:"first time i said i love you", memory:"my best memories are here ✨"},
+            {emoji:"🏔️", name:"first date", memory:"always thinking about it 💕"}
+        ];
+        
+        function renderMap() {
+            const container = document.getElementById('loveMap');
+            if(!container) return;
+            container.innerHTML = '';
+            locations.forEach(loc => {
+                let div = document.createElement('div');
+                div.className = 'map-location';
+                div.onclick = () => showPopup(loc.memory);
+                div.innerHTML = `<span class="location-emoji">${loc.emoji}</span>
+                                <div class="location-name">${loc.name}</div>
+                                <div class="location-memory">${loc.memory.substring(0,50)}</div>`;
+                container.appendChild(div);
+            });
+        }
+        
+        function addLocation() {
+            let name = prompt("Location name:");
+            if(!name) return;
+            let emoji = prompt("Emoji (📍,🏔️,☕, etc.):", "📍");
+            let memory = prompt("Special memory from this place:");
+            locations.push({emoji: emoji || "❤️", name: name, memory: memory || "A beautiful memory with you 💕"});
+            renderMap();
+            showPopup(`✨ Added "${name}" to our love map! ✨`);
+        }
+
+        // ========== LOVE CALENDAR ==========
+        let currentCal = new Date();
+        let checkins = [];
+        
+        function isChecked(y,m,d) {
+            return checkins.some(c => c.year === y && c.month === m && c.day === d);
+        }
+        
+        function checkInDate(y,m,d) {
+            if(!isChecked(y,m,d)) {
+                checkins.push({year: y, month: m, day: d});
+                renderCalendar();
+                showPopup("❤️ You left a heart on our calendar!");
+            }
+        }
+        
+        function renderCalendar() {
+            let y = currentCal.getFullYear(), m = currentCal.getMonth();
+            const monthSpan = document.getElementById('monthYear');
+            if(monthSpan) monthSpan.innerText = `${y} / ${m+1}`;
+            
+            let weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+            const weekdayContainer = document.getElementById('calendarWeekdays');
+            if(weekdayContainer) {
+                weekdayContainer.innerHTML = weekdays.map(d => `<div style="text-align:center; font-weight:bold; color:#764ba2;">${d}</div>`).join('');
+            }
+            
+            let firstDay = new Date(y, m, 1).getDay();
+            let daysInMonth = new Date(y, m+1, 0).getDate();
+            const container = document.getElementById('calendarDates');
+            if(!container) return;
+            container.innerHTML = '';
+            
+            for(let i = 0; i < firstDay; i++) {
+                let empty = document.createElement('div');
+                empty.className = 'calendar-date';
+                empty.style.visibility = 'hidden';
+                container.appendChild(empty);
+            }
+            
+            for(let d = 1; d <= daysInMonth; d++) {
+                let dateDiv = document.createElement('div');
+                dateDiv.className = 'calendar-date';
+                if(isChecked(y, m, d)) dateDiv.classList.add('checked');
+                dateDiv.innerText = d;
+                dateDiv.onclick = () => checkInDate(y, m, d);
+                container.appendChild(dateDiv);
+            }
+        }
+        
+        function prevMonth() { currentCal.setMonth(currentCal.getMonth() - 1); renderCalendar(); }
+        function nextMonth() { currentCal.setMonth(currentCal.getMonth() + 1); renderCalendar(); }
+
+        // ========== HEART GAME ==========
+        const loveMsgs = [
+            "🩷 You are beautiful", "🩶 I love you more each day", "🧡 Your smile is my sunshine",
+            "💛 You make me whole", "💚 My heart beats for you", "🤎 You are my dream",
+            "💙 You are my everything", "💜 I fall for you again", "🤍 You are my soulmate"
+        ];
+        let activeHearts = [], currentScore = 0;
+        
+        function buildHeartGame() {
+            const container = document.getElementById('heartGame');
+            if(!container) return;
+            container.innerHTML = '';
+            activeHearts = Array(9).fill(true);
+            currentScore = 0;
+            const scoreSpan = document.getElementById('gameScore');
+            if(scoreSpan) scoreSpan.innerText = currentScore;
+            for(let i = 0; i < 9; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'game-heart';
+                heart.innerHTML = '❤️‍🔥';
+                heart.onclick = () => collectHeart(i);
+                container.appendChild(heart);
+            }
+        }
+        
+        function collectHeart(idx) {
+            if(!activeHearts[idx]) return;
+            activeHearts[idx] = false;
+            currentScore++;
+            const scoreSpan = document.getElementById('gameScore');
+            if(scoreSpan) scoreSpan.innerText = currentScore;
+            const hearts = document.getElementsByClassName('game-heart');
+            if(hearts[idx]) hearts[idx].style.opacity = '0.5';
+            showPopup(loveMsgs[idx % loveMsgs.length]);
+            if(currentScore === 9) {
+                setTimeout(() => {
+                    showPopup("🎉 YOU COLLECTED ALL MY HEARTS! I LOVE YOU! You are truly worthy of my love 🎉");
+                }, 500);
+            }
+        }
+        
+        function resetGame() { buildHeartGame(); }
+
+        // ========== MEMORY MATCH GAME ==========
+        let memCards = [], flippedIdx = [], matchedCnt = 0;
+        const symbols = ['🌸', '🌹', '💘', '💞', '🌸', '🌹', '💘', '💞'];
+        const matchMessages = [
+            "🌸 You're as beautiful as a flower! 🌸",
+            "🌹 My love for you grows like a red rose! 🌹",
+            "💘 Our love is perfect! 💘",
+            "💞 You make my heart happy! 💞"
+        ];
+        
+        function shuffle(arr) {
+            for(let i = arr.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        
+        function initMemoryGame() {
+            memCards = shuffle([...symbols]);
+            flippedIdx = [];
+            matchedCnt = 0;
+            renderMemoryBoard();
+        }
+        
+        function renderMemoryBoard() {
+            const board = document.getElementById('memoryBoard');
+            if(!board) return;
+            board.innerHTML = '';
+            memCards.forEach((val, idx) => {
+                let card = document.createElement('div');
+                card.className = 'memory-card';
+                let isFlipped = flippedIdx.includes(idx);
+                let isMatched = memCards[idx] === null;
+                if(isMatched) card.classList.add('matched');
+                if(isFlipped) card.classList.add('flipped');
+                card.innerHTML = (isFlipped || isMatched) ? val : '?';
+                card.onclick = () => flipCard(idx);
+                board.appendChild(card);
+            });
+        }
+        
+        function flipCard(idx) {
+            if(flippedIdx.includes(idx)) return;
+            if(memCards[idx] === null) return;
+            if(flippedIdx.length === 2) return;
+            flippedIdx.push(idx);
+            renderMemoryBoard();
+            if(flippedIdx.length === 2) {
+                setTimeout(() => {
+                    let v1 = memCards[flippedIdx[0]];
+                    let v2 = memCards[flippedIdx[1]];
+                    if(v1 === v2 && v1 !== null) {
+                        memCards[flippedIdx[0]] = null;
+                        memCards[flippedIdx[1]] = null;
+                        matchedCnt++;
+                        let msgIndex = (matchedCnt - 1) % matchMessages.length;
+                        showPopup(matchMessages[msgIndex]);
+                        if(matchedCnt === symbols.length / 2) {
+                            setTimeout(() => {
+                                showPopup("🎉 Congratulations! You completed the memory game! 🎉");
+                            }, 500);
+                        }
+                    }
+                    flippedIdx = [];
+                    renderMemoryBoard();
+                }, 500);
+            }
+        }
+
+        // ========== LOVE QUESTION ==========
+        function loveAnswer(ans) {
+            const respDiv = document.getElementById('loveResponse');
+            if(!respDiv) return;
+            if(ans === 'so much') respDiv.innerHTML = "❤️ Yes! But I love you even more! ❤️";
+            else if(ans === 'infinity') respDiv.innerHTML = "💫 Infinity + 1! 💫";
+            else respDiv.innerHTML = "💦 More than everything in the universe! 💦";
+        }
+
+        // ========== SECRET MESSAGES ==========
+        let secretMessages = [];
+        
+        function saveSecretMessage() {
+            let input = document.getElementById('secretMessageInput');
+            let msg = input ? input.value.trim() : '';
+            if(msg === "") {
+                showPopup("💕 write something first...");
+                return;
+            }
+            secretMessages.unshift({
+                id: Date.now(),
+                message: msg,
+                date: new Date().toLocaleString()
+            });
+            if(input) input.value = "";
+            const thanku = document.getElementById('thankyouMsg');
+            if(thanku) {
+                thanku.innerHTML = "✨ Thank you for your lovely message! ✨";
+                setTimeout(() => thanku.innerHTML = "", 3000);
+            }
+            showPopup("💓 your message is saved! only I can read it 💓");
+        }
+        
+        function exportAllMessages() {
+            let password = prompt("🔐 Enter secret password (only for me):");
+            if(password === "NedaLove2024") {
+                if(secretMessages.length === 0) {
+                    alert("📭 No messages yet.");
+                    return;
+                }
+                let csv = "📅 Date & Time,💝 Message\n";
+                secretMessages.forEach(msg => {
+                    csv += `"${msg.date}","${msg.message}"\n`;
+                });
+                let blob = new Blob([csv], {type: 'text/csv'});
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `neda_messages_${Date.now()}.csv`;
+                link.click();
+                showPopup("✅ Messages exported!");
+            } else {
+                showPopup("❌ Wrong password! This is only for me ❤️");
+            }
+        }
+
+        // ========== BIG SURPRISE ==========
+        function playPopSound() {
+            try {
+                let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                let oscillator = audioCtx.createOscillator();
+                let gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.frequency.value = 400;
+                gainNode.gain.value = 0.3;
+                oscillator.start();
+                gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.5);
+                oscillator.stop(audioCtx.currentTime + 0.5);
+            } catch(e) {}
+        }
+        
+        function bigSurprise() {
+            let balloon = document.createElement('div');
+            balloon.className = 'balloon-heart';
+            balloon.innerHTML = '💜';
+            balloon.style.fontSize = '200px';
+            document.body.appendChild(balloon);
+            
+            setTimeout(() => {
+                balloon.remove();
+                playPopSound();
+                for(let i = 0; i < 70; i++) {
+                    let smallHeart = document.createElement('div');
+                    smallHeart.className = 'small-heart';
+                    let hearts = ['💗', '💘', '💖', '💝', '💗', '💕'];
+                    smallHeart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    smallHeart.style.left = (window.innerWidth / 2 - 50 + (Math.random() - 0.5) * 250) + 'px';
+                    smallHeart.style.top = (window.innerHeight / 2 - 50 + (Math.random() - 0.5) * 200) + 'px';
+                    let angle = Math.random() * Math.PI * 2;
+                    let distance = 80 + Math.random() * 250;
+                    let x = Math.cos(angle) * distance;
+                    let y = Math.sin(angle) * distance;
+                    smallHeart.style.setProperty('--x', x + 'px');
+                    smallHeart.style.setProperty('--y', y + 'px');
+                    document.body.appendChild(smallHeart);
+                    setTimeout(() => smallHeart.remove(), 800);
+                }
+                document.body.classList.add('rainbow');
+                setTimeout(() => {
+                    document.body.classList.remove('rainbow');
+                }, 3000);
+                showPopup("💜💥 BOOM! Purple rain of hearts! I LOVE YOU! 💥💜");
+            }, 2800);
+        }
+
+        // ========== VISUAL EFFECTS ==========
+        const touchCanvas = document.getElementById('touchTrailCanvas');
+        const ctx = touchCanvas ? touchCanvas.getContext('2d') : null;
+        let sparks = [];
+        
+        function resizeTouchCanvas() {
+            if(touchCanvas) {
+                touchCanvas.width = window.innerWidth;
+                touchCanvas.height = window.innerHeight;
+            }
+        }
+        
+        class TouchSpark {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 18 + 10;
+                this.life = 1;
+                this.decay = 0.035;
+            }
+            update() {
+                this.life -= this.decay;
+                this.size *= 0.96;
+                return this.life > 0;
+            }
+            draw() {
+                if(!ctx) return;
+                ctx.font = `${this.size}px "Segoe UI"`;
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.life * 0.9})`;
+                ctx.fillText('✨', this.x, this.y);
+            }
+        }
+        
+        document.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            for(let i = 0; i < e.touches.length; i++) {
+                let x = e.touches[i].clientX;
+                let y = e.touches[i].clientY;
+                for(let s = 0; s < 2; s++) {
+                    sparks.push(new TouchSpark(x + (Math.random() - 0.5) * 20, y + (Math.random() - 0.5) * 20));
+                }
+            }
+        }, { passive: false });
+        
+        document.addEventListener('mousemove', (e) => {
+            for(let i = 0; i < 2; i++) {
+                sparks.push(new TouchSpark(e.clientX + (Math.random() - 0.5) * 15, e.clientY + (Math.random() - 0.5) * 15));
+            }
+        });
+        
+        function animateSparks() {
+            if(!ctx) return;
+            ctx.clearRect(0, 0, touchCanvas.width, touchCanvas.height);
+            sparks = sparks.filter(s => s.update());
+            sparks.forEach(s => s.draw());
+            requestAnimationFrame(animateSparks);
+        }
+        
+        window.addEventListener('resize', () => { resizeTouchCanvas(); });
+        resizeTouchCanvas();
+        animateSparks();
+
+        // ========== MUSIC (لینک آنلاین) ==========
+        let music = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        let isPlaying = false;
+        let musicBtn = document.getElementById('musicToggle');
+        
+        function startMusic() {
+            music.loop = true;
+            music.volume = 0.25;
+            music.play().then(() => {
+                isPlaying = true;
+                if(musicBtn) musicBtn.innerHTML = '🔊 Perfect is playing';
+            }).catch(() => {
+                if(musicBtn) musicBtn.innerHTML = '🔇 Click to play Perfect';
+            });
+        }
+        
+        if(musicBtn) {
+            musicBtn.addEventListener('click', () => {
+                if(isPlaying) {
+                    music.pause();
+                    isPlaying = false;
+                    musicBtn.innerHTML = '🔇 Perfect paused';
+                } else {
+                    music.play().then(() => {
+                        isPlaying = true;
+                        musicBtn.innerHTML = '🔊 Perfect is playing';
+                    }).catch(() => {});
+                }
+            });
+        }
+        startMusic();
+
+        // ========== TYPING ANIMATION ==========
+        let texts = [" love you girl ...", "You are my whole world...", "My heart beats for you..."];
+        let tIdx = 0, cPos = 0, del = false;
+        
+        function typeEffect() {
+            let el = document.getElementById('typewriter');
+            if(!el) return;
+            let current = texts[tIdx];
+            if(!del && cPos <= current.length) {
+                el.innerHTML = current.substring(0, cPos++);
+            } else if(del && cPos >= 0) {
+                el.innerHTML = current.substring(0, cPos--);
+            }
+            if(cPos === current.length + 1) {
+                del = true;
+                setTimeout(typeEffect, 1800);
+            } else if(cPos === 0 && del) {
+                del = false;
+                tIdx = (tIdx + 1) % texts.length;
+                setTimeout(typeEffect, 400);
+            } else {
+                setTimeout(typeEffect, del ? 40 : 120);
+            }
+        }
+        typeEffect();
+        
+        // ========== DAYS COUNTER ==========
+        function updateDays() {
+            let start = new Date(2023, 0, 1);
+            let diff = Math.ceil((new Date() - start) / 86400000);
+            let daysSpan = document.getElementById('daysCount');
+            if(daysSpan) daysSpan.innerText = Math.max(1, diff);
+        }
+        updateDays();
+        
+        let dailyMsgs = ["✨ You shine like a thousand stars ✨", "🌸 You make my life beautiful 🌸", "💭 Thinking of you all the time 💭", "🌙 You mean the world to me 🌙"];
+        let dailyMsgSpan = document.getElementById('dailyMessage');
+        if(dailyMsgSpan) dailyMsgSpan.innerHTML = dailyMsgs[Math.floor(Math.random() * dailyMsgs.length)];
+        
+        document.querySelectorAll('.photo-card').forEach((card, i) => {
+            card.addEventListener('click', () => {
+                let msgs = ["❤️ You are the most beautiful creature I've ever met!", "💖 Your smile can always make my day!", "⭐ You make my world brighter!"];
+                showPopup(msgs[i % msgs.length]);
+            });
+        });
+        
+        function showPopup(msg) {
+            let pop = document.createElement('div');
+            pop.className = 'message-popup';
+            pop.innerHTML = msg;
+            document.body.appendChild(pop);
+            setTimeout(() => pop.remove(), 2500);
+        }
+        
+        // ========== BACKGROUND PARTICLES ==========
+        const pCanvas = document.getElementById('particleCanvas');
+        const pCtx = pCanvas ? pCanvas.getContext('2d') : null;
+        let particles = [];
+        
+        function resizeParticles() {
+            if(pCanvas) {
+                pCanvas.width = window.innerWidth;
+                pCanvas.height = window.innerHeight;
+            }
+        }
+        
+        class Particle {
+            constructor() {
+                if(!pCanvas) return;
+                this.x = Math.random() * pCanvas.width;
+                this.y = Math.random() * pCanvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.vx = Math.random() - 0.5;
+                this.vy = Math.random() - 0.5;
+                this.color = `hsl(${Math.random() * 60 + 240}, 70%, 60%)`;
+            }
+            update() {
+                if(!pCanvas) return;
+                this.x += this.vx;
+                this.y += this.vy;
+                if(this.x < 0) this.x = pCanvas.width;
+                if(this.x > pCanvas.width) this.x = 0;
+                if(this.y < 0) this.y = pCanvas.height;
+                if(this.y > pCanvas.height) this.y = 0;
+            }
+            draw() {
+                if(!pCtx) return;
+                pCtx.fillStyle = this.color;
+                pCtx.beginPath();
+                pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                pCtx.fill();
+            }
+        }
+        
+        function initParticles() {
+            particles = [];
+            for(let i = 0; i < 80; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function animateParticles() {
+            if(!pCtx || !pCanvas) return;
+            pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        
+        window.addEventListener('resize', () => { resizeParticles(); initParticles(); });
+        resizeParticles();
+        initParticles();
+        animateParticles();
+        
+        // ========== SNOW AND FLOATING HEARTS ==========
+        function createSnow() {
+            let snow = document.createElement('div');
+            snow.innerHTML = '🩵';
+            snow.style.position = 'fixed';
+            snow.style.left = Math.random() * window.innerWidth + 'px';
+            snow.style.top = '-30px';
+            snow.style.fontSize = (15 + Math.random() * 25) + 'px';
+            snow.style.animation = 'fall 4s linear';
+            snow.style.pointerEvents = 'none';
+            snow.style.zIndex = '999';
+            document.body.appendChild(snow);
+            setTimeout(() => snow.remove(), 4000);
+        }
+        
+        function createFloatingHeart() {
+            let heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'floating-heart';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.bottom = '0px';
+            heart.style.fontSize = (16 + Math.random() * 28) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }
+        
+        setInterval(createSnow, 800);
+        setInterval(createFloatingHeart, 1100);
+        
+        // ========== INITIALIZE ALL ==========
+        renderMap();
+        renderCalendar();
+        buildHeartGame();
+        initMemoryGame();
+        renderPuzzle();
+        renderTreasure();
+    </script>
+</body>
+</html>
